@@ -44,32 +44,32 @@ https://anirudh3167.pythonanywhere.com
 
 <h1 align="center"> Current Focused tasks </h1>
 
-[ ] Anonymous file upload and download.
+- [ ] Anonymous file upload and download.
 
-[ ] User Authentication.
+- [ ] User Authentication.
 
-[ ] User Dashboard
+- [ ] User Dashboard
 
-[ ] Empty File (For Editings)
+- [ ] Empty File (For Editings)
 
-[ ] Ui Customizations
+- [ ] Ui Customizations
 
 <h1 align="center"> Future tasks </h1>
 
-[ ] Study Material (Study Store Integration)
+- [ ] Study Material (Study Store Integration)
 
-[ ] File Converter
+- [ ] File Converter
 
-[ ] OCR `Image to Text`
+- [ ] OCR `Image to Text`
 
-[ ] Code Editor (With stack based memory for auto-completion)
+- [ ] Code Editor (With stack based memory for auto-completion)
 
 <h1 align="center"> Why you should choose DataCrate ? </h1>
 
-[ ] Better UI
+- [ ] Better UI
 
-[ ] Easy to Use
+- [ ] Easy to Use
 
-[ ] Anonymus File Transfer --> Security++
+- [ ] Anonymus File Transfer --> Security++
 
-[ ] Content Availbility --> Study Material
+- [ ] Content Availbility --> Study Material

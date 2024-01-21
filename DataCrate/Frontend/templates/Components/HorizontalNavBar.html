@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Navbar </title>
+    <link rel='stylesheet' href="{% static 'css/Components/HorizontalNavBar.css' %}">
+</head>
+<body>
+    <div class="NavMainWrapper" id="mainWrapper">
+        <!-- Main Div of the Navbar -->
+        <div class="MainContainer">
+            <!-- Logo Section -->
+            <a href="{% url 'BasicSite:Home' %}" class="LogoSection"> Data Crate </a>
+
+            <div class="HamburgerWrapper">
+                <!-- Hamburger Button (Hide in Desktop) -->
+                <div class="HamburgerMenu">
+                    <div class="HamburgerLines HamburgerTop"></div>
+                    <div class="HamburgerLines HamburgerMid"></div>
+                    <div class="HamburgerLines HamburgerDown"></div>
+                </div>
+
+                <!-- Links Section -->
+                <div class="NavLinks">
+                    <div class="NavLink">
+                        <a href={% url 'FileShare:FileUpload' %} class="NavLinkHead"> Send </a>
+                    </div>
+                    <div class="NavLink">
+                        <a href="#" class="NavLinkHead"> Recieve </a>
+                    </div>
+                    <div class="NavLink">
+                        <a href="#" class="NavLinkHead"> Code Editor </a>
+                    </div>
+                    <div class="NavLink">
+                        <a href="#" class="NavLinkHead"> Tools & Services </a>
+                    </div>
+                </div>
+
+                <!-- Control Section -->
+                <div class="NavMainLinks">
+                    <a href="#" class="NavMainLink"> Login </a> 
+                    <a href="#" class="NavMainLink"> Sign Up </a> 
+                    <div onClick="toggleUIMode()" id="switch-mode" class="NavMainLink"
+                    style="cursor: pointer;"> D </div>  <!-- Dark/ Light mode -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function toggleUIMode() {
+            var elem = document.body;
+            elem.classList.toggle('light');
+
+            var e = document.getElementById('switch-mode');
+            if (e.innerText === 'D') {e.innerText = 'W';}
+            else {e.innerText = 'D';}
+        }
+    </script>
+</body>
+</html>

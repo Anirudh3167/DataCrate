@@ -1,0 +1,30 @@
+* {
+    width: 100%; height: 100%;
+    margin: 0;  padding: 0;
+
+    box-sizing: border-box;
+}
+
+body {
+    --bg-clr : rgb(6 20 11 / 65%);
+    --txt-clr :  rgb(78, 75, 75);
+    --special-txt-clr : green;
+    --highlight-txt-clr : white;
+    --anti-highlight-txt-clr : black;
+    &.light {
+        --bg-clr : rgb(217 227 221 / 40%);
+        --txt-clr : rgb(65,68,65);
+        --highlight-txt-clr : black;
+        --special-txt-clr : green;
+        --anti-highlight-txt-clr : white;
+    }
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--anti-highlight-txt-clr);
+    color: var(--highlight-txt-clr);
+}

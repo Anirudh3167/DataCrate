@@ -23,7 +23,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('',include('BasicSite.urls',namespace='BasicSite'))
+    path('',include('BasicSite.urls',namespace='BasicSite')),
+    path('file-transfer',include('FileTransfer.urls',namespace='FileTransfer')),
 ]
 
 # Serve static files during development

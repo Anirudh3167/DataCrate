@@ -1,0 +1,57 @@
+* {
+    width: 100%;    height: 100%;
+    padding: 0;     margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --bg-clr : rgb(6 20 11 / 65%);
+    --txt-clr :  rgb(78, 75, 75);
+    --special-txt-clr : green;
+    --highlight-txt-clr : white;
+    --anti-highlight-txt-clr : black;
+    &.light {
+        --bg-clr : rgb(217 227 221 / 40%);
+        --txt-clr : rgb(65,68,65);
+        --highlight-txt-clr : black;
+        --special-txt-clr : green;
+        --anti-highlight-txt-clr : white;
+    }
+}
+
+.UploadWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100%;
+    padding-top: 60px;
+
+    background-color: var(--anti-highlight-txt-clr);
+}
+
+.UploadContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100px;
+}
+
+.UploadBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 250px;
+    height: 80px;
+
+    font-size: 30px;
+    padding: 20px;
+    background-color: var(--special-txt-clr);
+    color: var(--anti-highlight-txt-clr);
+}

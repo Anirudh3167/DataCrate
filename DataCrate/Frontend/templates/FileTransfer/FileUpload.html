@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DataCrate </title>
+    <link rel="stylesheet" href="{% static 'css/FileTransfer/FileUpload.css' %}">
+</head>
+<body>
+    {% include 'Components/HorizontalNavBar.html' %}
+    <div class="UploadWrapper">
+        <!-- Main Container of the upload -->
+        <div class="UploadContainer">
+            <br><br><br>
+            This is the Upload files page of the DataCrate
+            <br><br>
+            <div class="UploadBtn"> Upload </div>
+        </div>
+    </div>
+</body>
+</html>

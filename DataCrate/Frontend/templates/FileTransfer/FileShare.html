@@ -13,12 +13,49 @@
         <!-- Main Container of the upload -->
         <div class="FileShareContainer">
             <!-- File Upload -->
-            <div class="FileUploadContainer">
-                Files will be uploaded here.
+            <div class="FileUploadWrapper">
+                <div class="FileUploadHead"> File Upload </div>
+                <!-- For The initial upload of files -->
+                <div class="FileUploadContainer" id="uploadBox" ondragover="handleDragOver(event)" 
+                ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+                    <!-- Handles the initial File uploading -->
+                    <div class="FileUploadSlide" id="FileUploadSlide1">
+                        <div class="FileUploadText"> 
+                            Icon of Upload here.
+                            <br><br><br>
+                            Drag and drop here 
+                            <br><br><br>
+                            -- or --
+                        </div>
+                        <input type="file" multiple id="file-upload-input" name="file-upload-input"
+                        oninput="showInput(event)" hidden>
+                        <button onClick="getFileInput()" class="FileUploadBtn" id="FileUploadBtn"> 
+                            Select Files to Upload 
+                        </button>
+                    </div>
+                    <!-- Handles the upload along with displaying files -->
+                    <div class="FileUploadSlide" id="FileUploadSlide2" style="display: none;">
+                        <div class="FileUploadShowFiles">
+                            <div class="FileUploadFile"> 
+                                Some File here 
+                                <div class="FileUploadDeleteFile"> Del </div>
+                            </div>
+                        </div>
+                        <div class="FileUploadLink" id="FileUploadLink" onclick="getFileInput()"> Choose other files </div>
+                        <a href="{% url 'BasicSite:Home' %}" class="FileUploadBtn" style="text-decoration: none;"> 
+                            Generate Link 
+                        </a>
+                        <button class="FileUploadBtn" onclick="resetDisplay()" style="background-color: red;"> 
+                            Cancel File Upload
+                        </button>
+                    </div>
+                </div>
             </div>
             <!-- File Download -->
-            <div class="FileDownloadContainer">
-                Files will be downloaded here
+            <div class="FileDownloadWrapper">
+                <div class="FileUploadHead"> File Download </div>
+                <!-- Slide 1 : Ask the link/code -->
+                <!-- Slide 2 : Show the download options -->
             </div>
             <!-- Others -->
             <div class="FileShareOthersContainer">
@@ -26,5 +63,64 @@
             </div>
         </div>
     </div>
+    <script>
+        const dropArea = document.getElementById("uploadBox");
+        const fileInput = document.getElementById('file-upload-input');
+        const uploadBtn = document.getElementById('FileUploadBtn');
+        const slide1 = document.getElementById('FileUploadSlide1');
+        const slide2 = document.getElementById('FileUploadSlide2');
+        const fileDisplay = document.getElementsByClassName('FileUploadShowFiles')[0]
+        
+        function getFileInput() {fileInput.click();}
+        function preventDefault(e) {e.preventDefault();}
+        function updateFilesList() {
+            let files = fileInput.files;
+            let content = ""
+            for(let i = 0; i < files.length; i++) {
+                content += ` <div class="FileUploadFile"> 
+                                ${files[i].name.length > 20 ? files[i].name.slice(0,50) + "..." : files[i].name}
+                                <div class="FileUploadDeleteFile"> Del </div>
+                            </div>`;
+            }
+            fileDisplay.innerHTML = content;
+        }
+        function showInput(e) {
+            if (fileInput.files.length === 0) return ;
+            updateFilesList();
+            uploadBtn.style.display = "none";
+            // fileInput.style.display = "flex";
+            slide1.style.display = "none";
+            slide2.style.display = "flex";
+        }
+
+        function resetDisplay() {
+            slide2.style.display = "none";
+            slide1.style.display = "flex";
+            uploadBtn.style.display = "flex";
+            fileInput.style.display = "none";
+
+        }
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropArea.classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropArea.classList.remove('dragover');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            fileInput.files = files;
+
+            showInput();
+        }
+    </script>
 </body>
 </html>

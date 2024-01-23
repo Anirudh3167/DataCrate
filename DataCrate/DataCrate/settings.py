@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # Apps
     'BasicSite',
     'FileTransfer',
+    'Editor',
+    'FileStore',
+    'ToolsServices',
 ]
 
 MIDDLEWARE = [

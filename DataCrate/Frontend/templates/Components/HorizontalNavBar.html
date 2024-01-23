@@ -24,24 +24,33 @@
 
                 <!-- Links Section -->
                 <div class="NavLinks">
+                    {% if user.is_authenticated %}
                     <div class="NavLink">
-                        <a href={% url 'FileShare:FileUpload' %} class="NavLinkHead"> Send </a>
+                        <a href="{% url 'FileShare:FileShare' %}" class="NavLinkHead"> Dashboard </a>
+                    </div>
+                    {% endif %}
+                    <div class="NavLink">
+                        <a href="{% url 'FileShare:FileShare' %}" class="NavLinkHead"> File Share </a>
                     </div>
                     <div class="NavLink">
-                        <a href="#" class="NavLinkHead"> Recieve </a>
+                        <a href="{% url 'Editor:Editor' %}" class="NavLinkHead"> Editor </a>
                     </div>
                     <div class="NavLink">
-                        <a href="#" class="NavLinkHead"> Code Editor </a>
+                        <a href="{% url 'FileStore:Home' %}" class="NavLinkHead"> File Store </a>
                     </div>
                     <div class="NavLink">
-                        <a href="#" class="NavLinkHead"> Tools & Services </a>
+                        <a href="{% url 'ToolsServices:Home' %}" class="NavLinkHead"> Tools & Services </a>
                     </div>
                 </div>
 
                 <!-- Control Section -->
                 <div class="NavMainLinks">
+                    {% if user.is_authenticated %}
+                    <a href="#" class="NavMainLink"> Logout </a>
+                    {% else %} 
                     <a href="#" class="NavMainLink"> Login </a> 
                     <a href="#" class="NavMainLink"> Sign Up </a> 
+                    {% endif %}
                     <div onClick="toggleUIMode()" id="switch-mode" class="NavMainLink"
                     style="cursor: pointer;"> D </div>  <!-- Dark/ Light mode -->
                 </div>

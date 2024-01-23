@@ -27,7 +27,7 @@
     width: 100%;
     height: 60px;
 
-    background-color:var(--bg-clr);
+    background-color:var(--nav-bg-clr);
     backdrop-filter: blur(7px);
 }
 
@@ -95,7 +95,7 @@
     flex-direction: row;
 
     height: 60px;
-    width: 60%;
+    width: 65%;
 }
 
 .NavLink {
@@ -118,11 +118,11 @@
     padding: 10px;
 
     font-size: 16px;
-    color: var(--txt-clr);
+    color: var(--nav-txt-clr);
     text-decoration: none;
     transition: 0.7s;
 }
-.NavLinkHead:hover {color: var(--special-txt-clr);}
+.NavLinkHead:hover {color: var(--nav-special-txt-clr);}
 
 .NavMainLinks {
     display: flex;

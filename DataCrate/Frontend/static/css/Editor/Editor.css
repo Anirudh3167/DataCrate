@@ -1,18 +1,19 @@
 * {
-    width: 100%; height: 100%;
-    margin: 0;  padding: 0;
-
+    width: 100%;    height: 100%;
+    padding: 0;     margin: 0;
     box-sizing: border-box;
 }
 
 body {
+    /* Navbar colours */
     --nav-bg-clr : rgb(6 20 11 / 65%);
     --nav-txt-clr :  rgb(78, 75, 75);
     --nav-special-txt-clr : green;
     --nav-highlight-txt-clr : white;
     --nav-anti-highlight-txt-clr : black;
     &.light {
-        --nav-bg-clr : rgb(221 227 220 / 17%);
+        /* Navbar colours */
+        --nav-bg-clr : rgb(232 249 228 / 40%);
         --nav-txt-clr : rgb(65,68,65);
         --nav-highlight-txt-clr : black;
         --nav-special-txt-clr : green;
@@ -20,11 +21,24 @@ body {
     }
 }
 
-h1 {
+.EditorMainWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100%;
+    padding-top: 60px;
+
+    background-color: var(--nav-anti-highlight-txt-clr);
+}
+
+.EditorMainContainer {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
-    background-color: var(--nav-anti-highlight-txt-clr);
     color: var(--nav-highlight-txt-clr);
 }

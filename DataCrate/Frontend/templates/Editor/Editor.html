@@ -11,7 +11,39 @@
     {% include 'Components/HorizontalNavBar.html' %}
     <div class="EditorMainWrapper">
         <div class="EditorMainContainer">
-            <h1>This is the Editor page.</h1>
+            <!-- Tool Bar -->
+            <div class="EditorToolBar">
+                <div class="EditorFileNameContainer">
+                    <input type="text" class="EditorFileName" id="file-name-input" placeholder="file name">
+                </div>
+                <div class="EditorToolBarOptions">
+                    <div class="EditorToolBarOption"> 
+                        <div class="EditorToolBarHead"> New </div>
+                    </div>
+                    <div class="EditorToolBarOption"> 
+                        <div class="EditorToolBarHead"> Existing </div>
+                    </div>
+                    <div class="EditorToolBarOption"> 
+                        <div class="EditorToolBarHead"> Clear </div>
+                    </div>
+                    <div class="EditorToolBarOption"> 
+                        <div class="EditorToolBarHead"> Others </div>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="EditorToolBarOption"> 
+                        <div class="EditorToolBarHead"> Save </div>
+                    </div>
+                    {% endif %}
+                    <div class="EditorToolBarOption"> 
+                        <div class="EditorGenerateLinkBtn"> Generate Link </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Editor -->
+            <textarea name="editor-main" id="editor-main" class="MainEditorBox"
+            placeholder="Write your content here">
+                
+            </textarea>
         </div>
     </div>
 </body>

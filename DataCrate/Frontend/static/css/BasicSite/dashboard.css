@@ -1,0 +1,22 @@
+* {
+    width: 100%;    height: 100%;
+    padding: 0;     margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Navbar colours */
+    --nav-bg-clr : rgb(6 20 11 / 65%);
+    --nav-txt-clr :  rgb(78, 75, 75);
+    --nav-special-txt-clr : green;
+    --nav-highlight-txt-clr : white;
+    --nav-anti-highlight-txt-clr : black;
+    &.light {
+        /* Navbar colours */
+        --nav-bg-clr : rgb(232 249 228 / 40%);
+        --nav-txt-clr : rgb(65,68,65);
+        --nav-highlight-txt-clr : black;
+        --nav-special-txt-clr : green;
+        --nav-anti-highlight-txt-clr : white;
+    }
+}

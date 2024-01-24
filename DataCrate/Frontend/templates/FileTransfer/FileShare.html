@@ -48,27 +48,64 @@
                         <button class="FileUploadBtn" onclick="resetDisplay()" style="background-color: red;"> 
                             Cancel File Upload
                         </button>
+
                     </div>
+                    <!-- For Handling the link display -->
+                    <!--  -->
+
+                    <!-- Copy Link, Share Link,... -->
                 </div>
             </div>
             <!-- File Download -->
             <div class="FileDownloadWrapper">
                 <div class="FileUploadHead"> File Download </div>
                 <!-- Slide 1 : Ask the link/code -->
+                <div class="FileDownloadSlide" id="FileDownloadSlide1">
+                    <div class="FileDownloadText"> Enter the link or code :</div>
+                    <div class="FileDownloadLinkBox">
+                        <input type="text" value="http://127.0.0.1:8000/file-transfer/" readonly style="text-align: right;">
+                        <input type="text" id="download-code" placeholder="Your Code" oninput="fileDownloadInputHandle()">
+                    </div>
+                    <div class="DownloadLinkBtn" onclick="getFiles()"> Get Files </div>
+                </div>
                 <!-- Slide 2 : Show the download options -->
+                <div class="FileDownloadSlide" id="FileDownloadSlide2" style="display: none;height: 450px;align-items: flex-start;">
+                    <div class="FileUploadShowFiles" style="height: 100%;">
+                        <div class="FileUploadFile"> 
+                            Some File here 
+                            <div class="FileUploadDeleteFile"> Download </div>
+                        </div>
+                    </div>
+                    <div class="FileDownloadFileInfo">
+                        <div class="FileDownloadFileCount"> 2 files in total </div>
+                        <div class="FileDownlodBtns">
+                            <div class="FileDownloadBtn"> Download All </div>
+                            <div class="FileDownloadBtn" style="background-color: red;" onclick="resetDownload()"> Cancel </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Others -->
-            <div class="FileShareOthersContainer">
-                Other things here.
+            <!-- Others: Handles if the link is of the Editor -->
+            <div class="FileDownloadEditorContainer">
+                <!-- Any Editor related thing will appear here. -->
+                <textarea  class="FileDownloadEditor" name="file-download-editor" id="file-download-editor" readonly>
+                </textarea>
+                <div class="FileDownloadEditorBtns">
+                    <div class="EditorBtn" onclick="getEditorContent()"> Get Editor Content </div>
+                    <a href="{% url 'Editor:Editor' %}" class="EditorBtn"> Continue Editing </a>
+                </div>
             </div>
         </div>
     </div>
     <script>
+        //////////////////////////////////
+        // File Upload Script
+        //////////////////////////////////
         const dropArea = document.getElementById("uploadBox");
         const fileInput = document.getElementById('file-upload-input');
         const uploadBtn = document.getElementById('FileUploadBtn');
-        const slide1 = document.getElementById('FileUploadSlide1');
-        const slide2 = document.getElementById('FileUploadSlide2');
+        const slide_1_1 = document.getElementById('FileUploadSlide1');
+        const slide_1_2 = document.getElementById('FileUploadSlide2');
         const fileDisplay = document.getElementsByClassName('FileUploadShowFiles')[0]
         
         function getFileInput() {fileInput.click();}
@@ -89,13 +126,13 @@
             updateFilesList();
             uploadBtn.style.display = "none";
             // fileInput.style.display = "flex";
-            slide1.style.display = "none";
-            slide2.style.display = "flex";
+            slide_1_1.style.display = "none";
+            slide_1_2.style.display = "flex";
         }
 
         function resetDisplay() {
-            slide2.style.display = "none";
-            slide1.style.display = "flex";
+            slide_1_2.style.display = "none";
+            slide_1_1.style.display = "flex";
             uploadBtn.style.display = "flex";
             fileInput.style.display = "none";
 
@@ -120,6 +157,42 @@
             fileInput.files = files;
 
             showInput();
+        }
+    </script>
+    <script>
+        //////////////////////////////////
+        // File Download Script
+        //////////////////////////////////
+        let downloadCode = "";
+        const codeInp = document.getElementById('download-code');
+        const slide_2_1 = document.getElementById('FileDownloadSlide1');
+        const slide_2_2 = document.getElementById('FileDownloadSlide2');
+        const editor = document.getElementById('file-download-editor');
+
+        function fileDownloadInputHandle() {
+            downloadCode = codeInp.value.split('http://127.0.0.1:8000/file-transfer')[0];
+            console.log(downloadCode);
+        }
+        function getFiles() {
+            slide_2_1.style.display = "none";
+            slide_2_2.style.display = "flex";
+            console.log(`Files are requested for link : http://127.0.0.1:8000/file-transfer/${downloadCode}`);
+        }
+        function resetDownload() {
+            slide_2_1.style.display = "flex";
+            slide_2_2.style.display = "none";
+        }
+        function getEditorContent() {
+            content = `
+                def HelloWorld():
+                    return "Hello word"
+                
+                def main():
+                    print(HelloWorld())
+
+                main()`;
+            console.log(content);
+            editor.innerText = content;
         }
     </script>
 </body>

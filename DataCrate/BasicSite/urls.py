@@ -9,5 +9,9 @@ app_name = "BasicSite"
 urlpatterns = [
     # File Sharing
     path('', Home, name = "Home"),
+    path('dashboard',Dashboard,name='Dashboard'),
+    path('profile',UserProfile,name='Profile'),
+    path('sign-in',SignIn,name='SignIn'),
+    path('sign-up',SignUp,name='SignUp'),
 ]
 urlpatterns += staticfiles_urlpatterns()

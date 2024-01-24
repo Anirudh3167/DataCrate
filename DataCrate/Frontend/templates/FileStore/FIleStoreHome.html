@@ -11,7 +11,23 @@
     {% include 'Components/HorizontalNavBar.html' %}
     <div class="FileStoreWrapper">
         <div class="FileStoreContainer">
-            <h1>This is the FileStore page.</h1>
+            <!-- To make navigation Easy -->
+            <div class="FileStoreTopBar">
+                <input type="text" class="FileStoreSearch"
+                placeholder="what are you looking for?">
+                <a href="{% url 'BasicSite:Home' %}" class="uploadBtn" > Publish File </a>
+            </div>
+            <!-- Most popular topics here -->
+            <div class="FileStoreTopSupport">
+                <div class="popularTopics"> IPU sem 6 </div>
+                <div class="popularTopics"> sem 5 </div>
+                <div class="popularTopics"> assignments </div>
+                <div class="popularTopics"> files </div>
+            </div>
+            <!-- Files here -->
+            <div class="FileStoreFiles">
+                
+            </div>
         </div>
     </div>
 </body>

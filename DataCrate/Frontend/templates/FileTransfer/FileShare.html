@@ -67,6 +67,7 @@
                         <input type="text" id="download-code" placeholder="Your Code" oninput="fileDownloadInputHandle()">
                     </div>
                     <div class="DownloadLinkBtn" onclick="getFiles()"> Get Files </div>
+                    <div class="DownloadLinkBtn" onclick="showEditor()"> Show Editor </div>
                 </div>
                 <!-- Slide 2 : Show the download options -->
                 <div class="FileDownloadSlide" id="FileDownloadSlide2" style="display: none;height: 450px;align-items: flex-start;">
@@ -86,7 +87,7 @@
                 </div>
             </div>
             <!-- Others: Handles if the link is of the Editor -->
-            <div class="FileDownloadEditorContainer">
+            <div class="FileDownloadEditorContainer" id="editor-box" style="display: none;">
                 <!-- Any Editor related thing will appear here. -->
                 <textarea  class="FileDownloadEditor" name="file-download-editor" id="file-download-editor" readonly>
                 </textarea>
@@ -193,6 +194,11 @@
                 main()`;
             console.log(content);
             editor.innerText = content;
+        }
+        function showEditor() {
+            var elem = document.getElementById('editor-box');
+            if (elem.style.display === 'flex') {elem.style.display = "none";}
+            else {elem.style.display = "flex";}
         }
     </script>
 </body>

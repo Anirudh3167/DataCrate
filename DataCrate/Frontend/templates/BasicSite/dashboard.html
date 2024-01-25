@@ -9,6 +9,83 @@
 </head>
 <body>
     {% include 'Components/HorizontalNavBar.html' %}
-    <h1> Dashboard page </h1>
+    <div class="dashboardWrapper">
+        <div class="dashboardTopBar">
+            <!-- Search and all will appear here. -->
+            <div class="dashboardSearchBox">
+                <input type="text" class="dashboardSearchBar" placeholder="search here">
+                <!-- Filter Icon -->
+                <div class="dashboardFilterBox"> Icon </div>
+            </div>
+
+            <div class="dashboardTopBarRight">
+                <div class="dashboardTopBarItem"> Sort </div>
+                <div class="dashboardTopBarItem"> View </div>
+                <a href="{% url 'Editor:Editor' %}" class="dashboardTopBarItem" 
+                style="background-color: orange;text-decoration: none;"> 
+                    + Create 
+                </a>
+            </div>
+        </div>
+        <div class="storageStats">
+            <div class="storageStatsHead"> Overview Storage</div>
+            <!-- Total memory stats -->
+            <div class="storageStatsItemContainer">
+                <!-- Single linear horizontal bar holding percentages -->
+                <div class="storageStatsTotalUtilization">
+                    <div class="progressBar">
+                        <div class="progressBarItem" id="progress-item-files" style="width: 20%; background-color: red;"></div>
+                        <div class="progressBarItem" id="progress-item-images" style="width: 20%; background-color: blue;"></div>
+                        <div class="progressBarItem" id="progress-item-documents" style="width: 15%; background-color: green;"></div>
+                        <div class="progressBarItem" id="progress-item-others" style="width: 5%; background-color: yellow;border-top-right-radius: 10px; border-bottom-right-radius: 10px;"></div>
+                    </div>
+                    <div class="storageMainStats"> 2GB left out of 15 GB. (used 13GB) </div>
+                </div>
+                <div class="storageStatsIemWrapper">
+                    <div class="storageStatsItem">
+                        <div class="storageStatsColour" style="background-color: red;"></div>
+                        <div class="storageStatsName"> Files </div>
+                        <div class="storageStatsSpace"> (100MB) </div>
+                    </div>
+                    <div class="storageStatsItem">
+                        <div class="storageStatsColour" style="background-color: blue;"></div>
+                        <div class="storageStatsName"> Images </div>
+                        <div class="storageStatsSpace"> (100MB) </div>
+                    </div>
+                    <div class="storageStatsItem">
+                        <div class="storageStatsColour" style="background-color: green;"></div>
+                        <div class="storageStatsName"> Videos </div>
+                        <div class="storageStatsSpace"> (100MB) </div>
+                    </div>
+                    <div class="storageStatsItem">
+                        <div class="storageStatsColour" style="background-color: yellow;"></div>
+                        <div class="storageStatsName"> Others </div>
+                        <div class="storageStatsSpace"> (100MB) </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboardFilesWrapper">
+            <div class="storageStatsHead"> Your Files </div>
+            <div class="dashboardFilesContainer">
+                <div class="dashboardFileItem" style="font-size: 20px;font-weight: 400;font-family: sans-serif;">
+                    <div class="dashboardFileItemName"> File Name </div>
+                    <div class="dashboardFileItemSize"> Size </div>
+                    <div class="dashboardFileItemLastModified"> Last Modified</div>
+                </div>
+                <div class="dashboardFileItem">
+                    <div class="dashboardFileItemName"> File 1 </div>
+                    <div class="dashboardFileItemSize"> 8Kb </div>
+                    <div class="dashboardFileItemLastModified"> 23/03/2023 - 17:58 </div>
+                </div>
+                <div class="dashboardFileItem">
+                    <div class="dashboardFileItemName"> File 2 </div>
+                    <div class="dashboardFileItemSize"> 8Kb </div>
+                    <div class="dashboardFileItemLastModified"> 23/03/2023 - 16:58 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

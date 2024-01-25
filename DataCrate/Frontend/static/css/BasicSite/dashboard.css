@@ -5,6 +5,9 @@
 }
 
 body {
+    /* Component colours */
+    --cmp-lvl-1-bg-clr : rgb(151 162 151 / 15%);
+
     /* Navbar colours */
     --nav-bg-clr : rgb(6 20 11 / 65%);
     --nav-txt-clr :  rgb(78, 75, 75);
@@ -19,4 +22,331 @@ body {
         --nav-special-txt-clr : green;
         --nav-anti-highlight-txt-clr : white;
     }
+}
+
+.dashboardWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+
+    padding-top: 60px;
+    background-color: var(--nav-anti-highlight-txt-clr);
+    color: var(--nav-highlight-txt-clr);
+}
+
+.dashboardTopBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    min-height: 50px;
+    height: fit-content;
+
+    padding: 10px;
+    background-color: var(--nav-bg-clr);
+    color: var(--nav-highlight-txt-clr);
+}
+
+.dashboardSearchBox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    width: 40%;
+    max-width: 500px;
+    min-width: 300px;
+    height: 40px;
+
+    padding: 10px;
+    border-radius: 10px;
+    color: rgba(97, 101, 98, 0.728);
+    background-color: rgba(21, 23, 22, 0.826);
+}
+
+.dashboardSearchBar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    text-align: left;
+
+    width: calc(100% - 60px);
+    height: 100%;
+
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    padding: 10px;
+}
+
+.dashboardFilterBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 60px;
+    height: 100%;
+
+    padding: 10px;
+    background-color: transparent;
+}
+
+.dashboardTopBarRight {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    width: 30%;
+    min-width: 300px;
+    height: 60px;
+
+    padding: 0 10px;
+}
+
+.dashboardTopBarItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 140px;
+    height: 40px;
+
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(47, 49, 48, 0.648);
+    color: var(--nav-highlight-txt-clr);
+}
+
+.storageStats {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: calc(100% - 40px);
+    min-height: 300px;
+    height: fit-content;
+
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--cmp-lvl-1-bg-clr);
+}
+
+.storageStatsHead {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 20%;
+    min-width: 300px;
+    height: 50px;
+
+    padding: 10px;
+    margin: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: sans-serif;
+    color: var(--nav-highlight-txt-clr);
+}
+
+.storageStatsTotalUtilization {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: auto;
+}
+
+.storageMainStats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--nav-highlight-txt-clr);
+}
+
+.progressBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: calc(100% - 40px);
+    max-width: 600px;
+    min-width: 280px;
+    height: 10px;
+
+    
+    margin: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: rgba(38, 38, 38, 0.815);
+}
+
+.progressBarItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: calc(100% - 2px);
+    width: 0%;
+}
+
+.storageStatsIemWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: auto;
+}
+
+.storageStatsItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    width: fit-content;
+
+    margin: 10px 30px;
+}
+
+.storageStatsColour {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.storageStatsName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    height: 40px;
+
+    margin: 5px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.storageStatsSpace {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    height: 40px;
+
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: sans-serif;
+
+}
+
+.dashboardFilesWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    width: calc(100% - 40px);
+    min-height: 300px;
+    height: auto;
+
+    padding: 10px;
+    margin: 20px;
+    background-color: var(--cmp-lvl-1-bg-clr);
+}
+
+.dashboardFilesContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    width: calc(100% - 20px);
+    min-height: 300px;
+    height: auto;
+
+    padding: 10px;
+    margin: 10px;
+}
+
+.dashboardFileItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    width: 100%;
+    height: 60px;
+    
+    border: 1px solid rgb(209, 202, 202);
+}
+
+.dashboardFileItemName {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 65%;
+    min-width: 160px;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.dashboardFileItemSize {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 120px;
+    width: 15%;
+    height: 100%;
+    border-left: 1px solid rgb(209, 202, 202);
+    border-right: 1px solid rgb(209, 202, 202);
+}
+
+.dashboardFileItemLastModified {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 150px;
+    width: 20%;
+    height: 100%;
 }

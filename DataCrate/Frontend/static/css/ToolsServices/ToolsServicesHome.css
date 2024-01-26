@@ -5,6 +5,9 @@
 }
 
 body {
+    /* Component colours */
+    --cmp-lvl-1-bg-clr : rgb(151 162 151 / 15%);
+
     /* Navbar colours */
     --nav-bg-clr : rgb(6 20 11 / 65%);
     --nav-txt-clr :  rgb(78, 75, 75);
@@ -41,4 +44,51 @@ body {
     flex-direction: column;
 
     color: var(--nav-highlight-txt-clr);
+}
+
+.ToolsHead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: fit-content;
+
+    font-size: 32px;
+    font-weight: 500;
+    font-family: sans-serif;
+    margin: 20px;
+}
+
+.ToolsHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: fit-content;
+
+    gap: 10px;
+
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+.ToolBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 140px;
+    max-width: 300px;
+    height: 150px;
+
+    border-radius: 10px;
+    color: var(--nav-highlight-txt-clr);
+    background-color: var(--cmp-lvl-1-bg-clr);
 }

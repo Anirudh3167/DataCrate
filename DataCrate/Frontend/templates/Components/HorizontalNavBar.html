@@ -46,10 +46,10 @@
                 <!-- Control Section -->
                 <div class="NavMainLinks">
                     {% if user.is_authenticated %}
-                    <a href="#" class="NavMainLink"> Logout </a>
+                    <a href="{% url 'BasicSite:Home' %}" class="NavMainLink"> Logout </a>
                     {% else %} 
-                    <a href="#" class="NavMainLink"> Login </a> 
-                    <a href="#" class="NavMainLink"> Sign Up </a> 
+                    <a href="{% url 'BasicSite:SignIn' %}" class="NavMainLink"> Login </a> 
+                    <a href="{% url 'BasicSite:SignUp' %}" class="NavMainLink"> Sign Up </a> 
                     {% endif %}
                     <div onClick="toggleUIMode()" id="switch-mode" class="NavMainLink"
                     style="cursor: pointer;"> D </div>  <!-- Dark/ Light mode -->

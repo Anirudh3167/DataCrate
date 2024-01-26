@@ -4,10 +4,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DataCrate | Sign In </title>
+    <title>DataCrate | Sign In</title>
     <link rel="stylesheet" href="{% static 'css/BasicSite/SignIn.css' %}">
 </head>
 <body>
-    <h1>Sign In page.</h1>
+
+<div class='SigninWrapper'>
+    <!-- Upper Text -->
+    <div class="SigninMainContainer">
+        <div class="SigninHello"> Hello again </div>
+        <div class="SigninWelcomeMessage">
+            Welcome back. Please sign in to continue
+        </div>
+        <!-- OAuth Buttons -->
+        <div class="SigninOauthWrapper">
+            <div class="SigninOAuthBtn">
+                <span style="font-size:24px; margin:0px 10px;">&#128269;</span>
+                Sign in with Google
+            </div>
+            <div class="SigninOr"> or </div>
+        </div>
+        <!-- Input Container -->
+        <div class="SigninInputWrapper">
+            <div class="SigninInputContainer">
+                <input type="email" class='SigninInputBox' onchange="setEmail(event)" placeholder='Email'>
+            </div>
+            <div class="SigninInputContainer">
+                <input class='SigninInputBox' type="password" id="pass-holder" onchange="setPass(event)" placeholder='Password' style="padding-right:40px;">
+                <span class='passwordIcon' id="pass-icon" onclick="showPassword()"> show </span>
+            </div>
+            <div class="SigninRememberContainer">
+                <div class="SigninRemeber">
+                    <input type="checkbox" class='SigninCheckBox' name='rememberMe' />
+                    <label for="rememberMe" class='rememberMe'> Remember me </label>
+                </div>
+                <a href="{% url 'BasicSite:Home' %}" class="SigninForgotPassword"> Forgot Password? </a>
+            </div>
+        </div>
+        <!-- Sign In -->
+        <div class="SigninButton" onclick="handleSubmit()"> Sign in </div>
+        <!-- Sign up -->
+        <div class="SignupContainer">
+            Doesn't have an account?
+            <a href="{% url 'BasicSite:SignUp' %}" class="SigninForgotPassword"> Sign up</a>
+        </div>
+    </div>
+</div>
+<script>
+    const passwordInput = document.getElementById('pass-holder');
+    const showPassIcon = document.getElementById('pass-icon');
+    let email = "";
+    let pass = "";
+
+    function showPassword() {
+        if (passwordInput.type === 'text') {
+            passwordInput.type = 'password';
+            showPassIcon.innerHTML = 'hide';
+        } else {
+            passwordInput.type = 'text';
+            showPassIcon.innerHTML = 'show';
+        }
+    }
+    function handleSubmit() {
+        console.log('Submitted email and password');
+        console.log(email,pass);
+    }
+    function setEmail(e) {email = e.target.value;}
+    function setPass(e) {pass = e.target.value;}
+</script>
 </body>
 </html>

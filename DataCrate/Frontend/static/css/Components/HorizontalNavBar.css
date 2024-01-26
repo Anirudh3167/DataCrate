@@ -139,11 +139,13 @@
     align-items: center;
     justify-content: center;
     
-    height: 50px;
+    height: 40px;
     width: fit-content;
     
-    margin: 5px;
-    padding: 5px;
-    color: green;
+    margin: 10px 5px 5px 5px;
+    padding: 20px;
+    color: black;
+    border-radius: 10px;
+    background-color: #9b888df5;
     text-decoration: none;
 }

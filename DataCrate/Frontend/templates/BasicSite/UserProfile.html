@@ -10,11 +10,13 @@
 <body>
     {% include 'Components/HorizontalNavBar.html' %}
     <div class="profilePageWrapper">
-        <h1> This is User Profile Page </h1>
         <!-------------------------------->
         <!-- User Details -->
         <!-- Profile pic, username on left -->
         <!-- email(must), phone number, country and city on right -->
+        <div class="profileMainDetails">
+            <div class="sectionHead">User Details</div>
+        </div>
 
         <!-------------------------------->
         <!-- Settings -->
@@ -24,7 +26,9 @@
         <!-- delete account -->
         <!-- Delete all files -->
         <!-- UI customization -->
-
+        <div class="profileMainDetails">
+            <div class="sectionHead"> Settings </div>
+        </div>
     </div>
 </body>
 </html>

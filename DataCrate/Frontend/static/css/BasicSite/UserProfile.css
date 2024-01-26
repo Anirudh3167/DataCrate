@@ -5,6 +5,9 @@
 }
 
 body {
+    /* Component colors */
+    --sec-clr-1 : rgba(31, 32, 31, 0.829);
+
     /* Navbar colours */
     --nav-bg-clr : rgb(6 20 11 / 65%);
     --nav-txt-clr :  rgb(78, 75, 75);
@@ -23,14 +26,49 @@ body {
 
 .profilePageWrapper {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     flex-direction: column;
 
     width: 100%;
     min-height: 100vh;
+    height: fit-content;
 
     padding-top: 60px;
     background-color: var(--nav-anti-highlight-txt-clr);
+    color: var(--nav-highlight-txt-clr);
+}
+
+.profileMainDetails {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: calc(100% - 40px);
+    min-width: 300px;
+    height: fit-content;
+    min-height: 300px;
+
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: sans-serif;
+    background-color: var(--sec-clr-1);
+}
+
+.sectionHead {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: fit-content;
+
+    font-size: 24px;
+    font-weight: 500;
+    margin: 10px 0;
     color: var(--nav-highlight-txt-clr);
 }

@@ -72,3 +72,169 @@ body {
     margin: 10px 0;
     color: var(--nav-highlight-txt-clr);
 }
+
+.profileDetailsBox {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: fit-content;
+}
+
+.profileLeftSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    width: 300px;
+    height: 300px;
+
+    margin: 5px;
+    padding: 10px;
+}
+
+.profilePicContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 140px;
+    height: 140px;
+
+    margin: 10px;
+    overflow: hidden;
+}
+
+.ProfilePicBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+}
+
+.profileUserName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 40px;
+
+    margin: 10px 0;
+    font-size: 16px;
+    color: var(--nav-highlight-txt-clr);
+}
+
+.profileRightSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: calc(100% - 320px);
+    min-width: 300px;
+
+    margin: 5px;
+    padding: 10px;
+}
+
+
+.profileRightItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    width: auto;
+    height: 80px;
+    margin: 10px;
+}
+
+.inputLabel {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: 20px;
+
+    margin: 0 5px;
+    font-size: 14px;
+    color: rgba(104, 101, 101, 0.826);
+}
+
+.inputBoxContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: calc(100% - 10px);
+    min-width: 280px;
+    max-width: 400px;
+    height: 40px;
+
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    outline: none;
+    border: 0;
+    background-color: var(--nav-anti-highlight-txt-clr);
+    color: var(--nav-highlight-txt-clr);
+}
+
+.profileRightItemWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    gap: 10px;
+}
+
+.profileSettingsContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    gap: 15px;
+
+    padding: 10px;
+}
+
+.profileButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: 280px;
+    height: 80px;
+
+    padding: 15px;
+    font-size: 18px;
+    background-color: var(--sec-clr-1);
+    color: var(--nav-highlight-txt-clr);
+    border-radius: 10px;
+}

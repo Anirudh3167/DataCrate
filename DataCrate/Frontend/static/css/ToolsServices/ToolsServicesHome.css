@@ -89,6 +89,7 @@ body {
     height: 150px;
 
     border-radius: 10px;
+    text-decoration: none;
     color: var(--nav-highlight-txt-clr);
     background-color: var(--cmp-lvl-1-bg-clr);
 }

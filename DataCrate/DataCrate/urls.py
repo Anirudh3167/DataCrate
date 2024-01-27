@@ -24,10 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('',include('BasicSite.urls',namespace='BasicSite')),
-    path('file-transfer',include('FileTransfer.urls',namespace='FileTransfer')),
-    path('editor',include('Editor.urls',namespace='Editor')),
-    path('file-store',include('FileStore.urls',namespace='FileStore')),
-    path('tools-services',include('ToolsServices.urls',namespace='ToolsServices')),
+    path('file-transfer/',include('FileTransfer.urls',namespace='FileTransfer')),
+    path('editor/',include('Editor.urls',namespace='Editor')),
+    path('file-store/',include('FileStore.urls',namespace='FileStore')),
+    path('tools-services/',include('ToolsServices.urls',namespace='ToolsServices')),
 ]
 
 # Serve static files during development

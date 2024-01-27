@@ -9,5 +9,6 @@ app_name = "ToolsServices"
 urlpatterns = [
     # File Sharing
     path('', Home, name = "Home"),
+    path('special-links',SpecialLinks,name="SpecialLinks"),
 ]
 urlpatterns += staticfiles_urlpatterns()

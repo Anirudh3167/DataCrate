@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataCrate | Special Links</title>
+    <link rel="stylesheet" href="{% static 'css/ToolsServices/SpecialLinks.css' %}">
+</head>
+<body>
+    {% include 'Components/HorizontalNavBar.html' %}
+    <div class="specialLinksWrapper">
+        <div class="SpecialLinksContainer">
+            <div class="specialLinksHead"> Special Links </div>
+            <div class="SpecialLinksTable">
+                <div class="SpecialLinksItem">
+                    <div class="SpecialLinkItemName"> Link Name </div>
+                    <div class="SpecialLinkItemDate"> Last Modified </div>
+                    <div class="SpecialLinkItemBtn"> View </div>
+                    <div class="SpecialLinkItemBtn"> Update </div>
+                </div>
+                <div class="SpecialLinksItem">
+                    <div class="SpecialLinkItemName"> File 0 </div>
+                    <div class="SpecialLinkItemDate"> 22/01/2023 - 14:59 </div>
+                    <a href="#" class="SpecialLinkItemBtn"> View </a>
+                    <a href="#" class="SpecialLinkItemBtn" style="border-right:0;"> Update </a>
+                </div>
+                <div class="SpecialLinksItem">
+                    <div class="SpecialLinkItemName"> Link Name </div>
+                    <div class="SpecialLinkItemDate"> 22/01/2023 - 14:59 </div>
+                    <a href="#" class="SpecialLinkItemBtn"> View </a>
+                    <a href="#" class="SpecialLinkItemBtn" style="border-right:0;"> Update </a>
+                </div>
+                <div class="SpecialLinksItem">
+                    <div class="SpecialLinkItemName"> Link Name </div>
+                    <div class="SpecialLinkItemDate"> 22/01/2023 - 14:59 </div>
+                    <a href="#" class="SpecialLinkItemBtn"> View </a>
+                    <a href="#" class="SpecialLinkItemBtn" style="border-right:0;"> Update </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

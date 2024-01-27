@@ -11,7 +11,8 @@
 
 <div class='SigninWrapper'>
     <!-- Upper Text -->
-    <div class="SigninMainContainer">
+    <form action="" method="post" class="SigninMainContainer">
+        {% csrf_token %}
         <div class="SigninHello"> Hello again </div>
         <div class="SigninWelcomeMessage">
             Welcome back. Please sign in to continue
@@ -27,34 +28,32 @@
         <!-- Input Container -->
         <div class="SigninInputWrapper">
             <div class="SigninInputContainer">
-                <input type="email" class='SigninInputBox' onchange="setEmail(event)" placeholder='Email'>
+                <input type="text" class='SigninInputBox' id="uname" name="uname" placeholder='Username'>
             </div>
             <div class="SigninInputContainer">
-                <input class='SigninInputBox' type="password" id="pass-holder" onchange="setPass(event)" placeholder='Password' style="padding-right:40px;">
+                <input class='SigninInputBox' type="password" id="pass-holder" name="pass" placeholder='Password' style="padding-right:40px;">
                 <span class='passwordIcon' id="pass-icon" onclick="showPassword()"> show </span>
             </div>
             <div class="SigninRememberContainer">
                 <div class="SigninRemeber">
-                    <input type="checkbox" class='SigninCheckBox' name='rememberMe' />
+                    <input type="checkbox" id="rememberMe" name="remember-me" class='SigninCheckBox' name='rememberMe' />
                     <label for="rememberMe" class='rememberMe'> Remember me </label>
                 </div>
                 <a href="{% url 'BasicSite:Home' %}" class="SigninForgotPassword"> Forgot Password? </a>
             </div>
         </div>
         <!-- Sign In -->
-        <div class="SigninButton" onclick="handleSubmit()"> Sign in </div>
+        <button type="submit" class="SigninButton"> Sign in </button>
         <!-- Sign up -->
         <div class="SignupContainer">
             Doesn't have an account?
             <a href="{% url 'BasicSite:SignUp' %}" class="SigninForgotPassword"> Sign up</a>
         </div>
-    </div>
+    </form>
 </div>
 <script>
     const passwordInput = document.getElementById('pass-holder');
     const showPassIcon = document.getElementById('pass-icon');
-    let email = "";
-    let pass = "";
 
     function showPassword() {
         if (passwordInput.type === 'text') {
@@ -65,12 +64,6 @@
             showPassIcon.innerHTML = 'show';
         }
     }
-    function handleSubmit() {
-        console.log('Submitted email and password');
-        console.log(email,pass);
-    }
-    function setEmail(e) {email = e.target.value;}
-    function setPass(e) {pass = e.target.value;}
 </script>
 </body>
 </html>

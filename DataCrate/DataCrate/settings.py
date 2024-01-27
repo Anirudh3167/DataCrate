@@ -62,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,"Frontend/templates")],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -87,10 +87,13 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'BasicSite.UserDetails'
+LOGIN_URL = '/sign-in'
+LOGIN_REDIRECT_URL = '/sign-in'
+LOGOUT_URL = '/logout'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

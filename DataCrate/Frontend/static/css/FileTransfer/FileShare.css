@@ -5,7 +5,7 @@
 }
 
 body {
-    /* Navbar colours */
+    /* Navbar colours */ 
     --nav-bg-clr : rgb(6 20 11 / 65%);
     --nav-txt-clr :  rgb(78, 75, 75);
     --nav-special-txt-clr : green;
@@ -84,7 +84,6 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-
     width: calc(100% - 10px);
     height: 40px;
 

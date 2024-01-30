@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    margin: 0;  
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    --nav-bg-clr : rgb(6 20 11 / 65%);
+    --nav-txt-clr :  rgb(78, 75, 75);
+    --nav-special-txt-clr : green;
+    --nav-highlight-txt-clr : white;
+    --nav-anti-highlight-txt-clr : black;
+    &.light {
+        --nav-bg-clr : rgb(221 227 220 / 17%);
+        --nav-txt-clr : rgb(65,68,65);
+        --nav-highlight-txt-clr : black;
+        --nav-special-txt-clr : green;
+        --nav-anti-highlight-txt-clr : white;
+    }
+}
+.JumboWrapper {
+    width: 100%;
+    min-height: 100%;
+    padding-top: 60px;
+
+    background-color: var(--nav-anti-highlight-txt-clr);
+    color: var(--nav-highlight-txt-clr);
+
+    background: url("/static/img/sample.jpeg") 50% 0 no-repeat fixed;
+}
+
+</style>
+</head>
+<body>
+    <div class="JumboWrapper">
+        <div class="TextOverlayContainer">
+            ASDF
+        </div>
+    </div>
+</body>
+</html>

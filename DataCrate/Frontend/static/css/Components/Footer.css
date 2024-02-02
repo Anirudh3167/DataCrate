@@ -1,0 +1,14 @@
+.FooterMainWrapper {
+    width: 100%;    height: fit-content;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    min-width: 300px;
+    min-height: 300px;
+    background-color: var(--nav-bg-clr);
+    color: var(--nav-highlight-txt-clr);
+}

@@ -9,9 +9,19 @@
 </head>
 <body>
     {% include 'Components/HorizontalNavBar.html' %}
-    <div class="HomeWrapper">  
-        {% include 'Components/HomeJumbotron.html' %}
-        {% include 'Components/HomeFeatures.html' %}
+    <div class="HomeWrapper">
+        <div class="HomeMainContainer">
+            <!-- Slide 1 (Introduction of Site) -->
+            <div class="HomeSlide1Container">
+                <div class="HomeCatchyText"> Make your file transfer is with DataCrate </div>
+                <div class="HomeCatchyImg"></div>
+            </div>
+            <!-- Slide 2 (Features of Site) -->
+            <div class="HomeSlide2Container">
+                <div class="HomeCatchyText"> Here's how it works? </div>
+            </div>
+        </div>
+        {% include 'Components/Footer.html' %}
     </div>
     
 </body>

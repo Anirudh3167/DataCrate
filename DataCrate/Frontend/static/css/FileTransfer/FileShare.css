@@ -42,7 +42,7 @@ body {
 .FileShareContainer {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 
@@ -356,7 +356,6 @@ body {
     flex-direction: column;
 
     width: calc(100% - 40px);
-    max-width: 600px;
     min-width: 300px;
     min-height: 500px;
     height: 40%;

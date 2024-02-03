@@ -16,14 +16,14 @@
 
             <div class="HamburgerWrapper">
                 <!-- Hamburger Button (Hide in Desktop) -->
-                <div class="HamburgerMenu">
+                <div class="HamburgerMenu" onclick="toggleHamburger()" id="ham-active">
                     <div class="HamburgerLines HamburgerTop"></div>
                     <div class="HamburgerLines HamburgerMid"></div>
                     <div class="HamburgerLines HamburgerDown"></div>
                 </div>
 
                 <!-- Links Section -->
-                <div class="NavLinks">
+                <div class="NavLinks" id="nav-links">
                     {% if user.is_authenticated %}
                     <div class="NavLink">
                         <a href="{% url 'BasicSite:Dashboard' %}" class="NavLinkHead"> Dashboard </a>
@@ -44,7 +44,7 @@
                 </div>
 
                 <!-- Control Section -->
-                <div class="NavMainLinks">
+                <div class="NavMainLinks" id="nav-main-links">
                     {% if user.is_authenticated %}
                     <a href="{% url 'BasicSite:Profile' %}" class="NavMainLink" style="background-color: transparent;color: green;"> profile </a> 
                     <a href="{% url 'BasicSite:Logout' %}" class="NavMainLink"> Logout </a>
@@ -60,6 +60,11 @@
         </div>
     </div>
     <script>
+        // Variables
+        var hamActive = document.getElementById('ham-active');
+        let navLinks = document.getElementById('nav-links');
+        let navMainLinks = document.getElementById('nav-main-links');
+
         function toggleUIMode() {
             var elem = document.body;
             elem.classList.toggle('light');
@@ -67,6 +72,21 @@
             var e = document.getElementById('switch-mode');
             if (e.innerText === 'D') {e.innerText = 'W';}
             else {e.innerText = 'D';}
+        }
+        function toggleHamburger() {
+            // toggle the cross.
+            hamActive.classList.toggle('activeHamburger');
+
+            // Make the links visible
+            if (navLinks.style.display === 'flex') {
+                // Order is must as initially navLinks.style.display = ''.
+                // This is due to the fact that no inline css is defined.
+                navLinks.style.display = 'none';
+                navMainLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navMainLinks.style.display = 'flex';
+            }
         }
     </script>
 </body>

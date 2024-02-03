@@ -96,8 +96,10 @@ body {
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: row;
+    flex-wrap: wrap;
 
     width: fit-content;
+    max-width: 100%;
     min-height: 50px;
     height: fit-content;
 
@@ -160,4 +162,10 @@ body {
     resize: none;
     background-color: #1d1f1dd9;
     color: rgba(241, 239, 239, 0.85);
+}
+
+
+/* Responsive Design */
+@media only screen and (max-width : 800px) {
+    .MainEditorBox {width: calc(100% - 20px);}
 }

@@ -1,14 +1,142 @@
-.FooterMainWrapper {
+.FooterMainwrapper {
     width: 100%;    height: fit-content;
 
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
 
     min-width: 300px;
     min-height: 300px;
+
     background-color: var(--nav-bg-clr);
+    color: var(--nav-highlight-txt-clr);
+}
+
+.FooterMainContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    min-height: 260px;
+    height: fit-content;
+}
+
+.FooterLeftSection {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 30%;
+    min-width: 300px;
+    max-width: 400px;
+    height: 100%;
+
+    padding: 10px;
+}
+
+.FooterLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 180px;
+    height: 60px;
+
+    padding: 5px 10px;
+    font-size: 30px;
+    font-style: italic;
+    text-decoration: none;
+    color: rgb(13, 113, 13);
+}
+
+.FooterDesc {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+
+    width: 100%;
+    height: auto;
+    min-height: 150px;
+
+    margin: 5px 0;
+
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(106, 110, 107, 0.719);
+}
+
+.FooterRightSection {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 70%;
+    min-width: 300px;
+    max-width: 800px;
+    height: 100%;
+
+    padding: 10px;
+    gap: 20px;
+    font-family: sans-serif;
+}
+
+.FooterLinksHolder {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 180px;
+    height: fit-content;
+}
+
+.FooterLinkHolderHead {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 40px;
+
+    padding: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--nav-highlight-txt-clr);
+}
+
+.FooterLinkItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 40px;
+
+    padding: 10px;
+    color: var(--nav-highlight-txt-clr);
+    background-color: var(--nav-anti-highlight-txt-clr);
+    text-decoration: none;
+}
+.FooterLinkItem:hover {background-color: rgba(165, 157, 157, 0.833);}
+
+.FooterCopyRightContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 40px;
+
+    font-size: 20px;
+    font-style: italic;
     color: var(--nav-highlight-txt-clr);
 }

@@ -46,8 +46,8 @@
                 <!-- Control Section -->
                 <div class="NavMainLinks" id="nav-main-links">
                     {% if user.is_authenticated %}
-                    <a href="{% url 'BasicSite:Profile' %}" class="NavMainLink" style="background-color: transparent;color: green;"> profile </a> 
-                    <a href="{% url 'BasicSite:Logout' %}" class="NavMainLink"> Logout </a>
+                    <a href="{% url 'BasicSite:Profile' %}" class="NavMainLink" style="color: green;"> profile </a> 
+                    <a href="{% url 'BasicSite:Logout' %}" class="NavMainLink" style="color: red;"> Logout </a>
                     {% else %} 
                     <a href="{% url 'BasicSite:SignIn' %}" class="NavMainLink"> Login </a> 
                     <a href="{% url 'BasicSite:SignUp' %}" class="NavMainLink"> Sign Up </a> 

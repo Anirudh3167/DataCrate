@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> DataCrate </title>
     <link rel="stylesheet" href="{% static 'css/FileTransfer/FileShare.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Variables/Variables.css' %}">
 </head>
 <body>
     {% include 'Components/HorizontalNavBar.html' %}
@@ -18,7 +19,7 @@
                 <!-- For The initial upload of files -->
                 <div class="FileUploadContainer" id="uploadBox" ondragover="handleDragOver(event)" 
                 ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
-                    <!-- Handles the initial File uploading -->
+                    <!-- Slide 1.1 : Handles the initial File uploading -->
                     <div class="FileUploadSlide" id="FileUploadSlide1">
                         <div class="FileUploadText"> 
                             Icon of Upload here.
@@ -33,7 +34,7 @@
                             Select Files to Upload 
                         </button>
                     </div>
-                    <!-- Handles the upload along with displaying files -->
+                    <!-- Slide 1.2 : Handles the upload along with displaying files -->
                     <div class="FileUploadSlide" id="FileUploadSlide2" style="display: none;">
                         <div class="FileUploadShowFiles">
                             <div class="FileUploadFile"> 
@@ -42,34 +43,46 @@
                             </div>
                         </div>
                         <div class="FileUploadLink" id="FileUploadLink" onclick="getFileInput()"> Choose other files </div>
-                        <a href="{% url 'BasicSite:Home' %}" class="FileUploadBtn" style="text-decoration: none;"> 
-                            Generate Link 
-                        </a>
+                        <div class="FileUploadBtn" onclick="generateLink()"> Generate Link </div>
                         <button class="FileUploadBtn" onclick="resetDisplay()" style="background-color: red;"> 
                             Cancel File Upload
                         </button>
-
                     </div>
-                    <!-- For Handling the link display -->
-                    <!--  -->
-
-                    <!-- Copy Link, Share Link,... -->
+                    <!-- Slide 1.3 : Display the link generated -->
+                    <div class="FileUploadSlide" id="FileUploadSlide3" style="display: none;">
+                        <!-- Content Describing the link -->
+                        <div class="FileLinkHead" id="file-link-head"> 3 Files have been uploaded sucessfully </div>
+                        <!-- Link for the uploaded files -->
+                        <div class="FileUploadLinkContainer">
+                            <a href="#" id="link-display" class="FileUploadLink"> Some link </a>
+                            <div class="FileUploadLinkActivities">
+                                <div class="FileUploadActivityContainer" id="copy-file-link" onclick="copyFileLink()"> Copy </div>
+                                <div class="FileUploadActivityContainer"> Share </div>
+                                <div class="FileUploadActivityContainer"> Email </div>
+                                <div class="FileUploadActivityContainer"> Upload to cloud </div>
+                            </div>
+                        </div>
+                        <!-- Going back to slide 1 -->
+                        <button class="FileUploadBtn" onclick="resetDisplay()"> 
+                            Upload other files
+                        </button>
+                    </div>
                 </div>
             </div>
             <!-- File Download -->
             <div class="FileDownloadWrapper">
                 <div class="FileUploadHead"> File Download </div>
-                <!-- Slide 1 : Ask the link/code -->
+                <!-- Slide 2.1 : Ask the link/code -->
                 <div class="FileDownloadSlide" id="FileDownloadSlide1">
                     <div class="FileDownloadText"> Enter the link or code :</div>
                     <div class="FileDownloadLinkBox">
                         <input type="text" value="http://127.0.0.1:8000/file-transfer/" readonly style="text-align: right;">
-                        <input type="text" id="download-code" placeholder="Your Code" oninput="fileDownloadInputHandle()">
+                        <input type="text" id="download-code" placeholder="Your Code" oninput="getDownloadCode()">
                     </div>
                     <div class="DownloadLinkBtn" onclick="getFiles()"> Get Files </div>
                     <div class="DownloadLinkBtn" onclick="showEditor()"> Show Editor </div>
                 </div>
-                <!-- Slide 2 : Show the download options -->
+                <!-- Slide 2.2 : Show the download options -->
                 <div class="FileDownloadSlide" id="FileDownloadSlide2" style="display: none;height: 450px;align-items: flex-start;">
                     <div class="FileUploadShowFiles" style="height: 100%;">
                         <div class="FileUploadFile"> 
@@ -86,6 +99,7 @@
                     </div>
                 </div>
             </div>
+            
             <!-- Others: Handles if the link is of the Editor -->
             <div class="FileDownloadEditorContainer" id="editor-box" style="display: none;">
                 <!-- Any Editor related thing will appear here. -->
@@ -104,11 +118,15 @@
         // File Upload Script
         //////////////////////////////////
         const dropArea = document.getElementById("uploadBox");
-        const fileInput = document.getElementById('file-upload-input');
+        var fileInput = document.getElementById('file-upload-input');
         const uploadBtn = document.getElementById('FileUploadBtn');
         const slide_1_1 = document.getElementById('FileUploadSlide1');
         const slide_1_2 = document.getElementById('FileUploadSlide2');
-        const fileDisplay = document.getElementsByClassName('FileUploadShowFiles')[0]
+        const slide_1_3 = document.getElementById('FileUploadSlide3');
+        const linkDisp = document.getElementById('link-display');
+        const FileLinkHead = document.getElementById('file-link-head');
+        const copyLink = document.getElementById('copy-file-link');
+        const fileDisplay = document.getElementsByClassName('FileUploadShowFiles')[0];
         
         function getFileInput() {fileInput.click();}
         function preventDefault(e) {e.preventDefault();}
@@ -123,21 +141,51 @@
             }
             fileDisplay.innerHTML = content;
         }
+        function copyFileLink() {
+            // paste the link on clipboard
+            navigator.clipboard.writeText(linkDisp.innerText);
+
+            // Change the button to copied
+            copyLink.innerText = 'Copied';
+        }
+        function generateLink() {
+            // Send the files to backend via javascript post request.
+            // console.log(fileInput.files);
+
+            // Switch to screen 3.
+            switchScreen('upload','3');
+
+            // Show the generated link.
+            let link = "http://127.0.0.1:8000/dashboard";
+            linkDisp.href = link;
+            linkDisp.innerText = link;
+
+            // Display the success message.
+            if (fileInput.files.length === 1) {
+                FileLinkHead.innerText = "1 File has been uploaded sucessfully";
+            } else {
+                FileLinkHead.innerText = `${fileInput.files.length} Files have been uploaded sucessfully`;
+            }
+
+            // Free the fileInput
+            fileInput.value = '';
+            copyLink.innerText = 'copy';    // Just incase if second time upload is done.
+        }
         function showInput(e) {
             if (fileInput.files.length === 0) return ;
             updateFilesList();
             uploadBtn.style.display = "none";
-            // fileInput.style.display = "flex";
-            slide_1_1.style.display = "none";
-            slide_1_2.style.display = "flex";
+            switchScreen('upload','2');
         }
 
         function resetDisplay() {
-            slide_1_2.style.display = "none";
-            slide_1_1.style.display = "flex";
+            // Go back to screen 1
+            switchScreen('upload','1');
             uploadBtn.style.display = "flex";
             fileInput.style.display = "none";
-
+            
+            // Clear the input files.
+            fileInput.value = '';
         }
         function handleDragOver(e) {
             e.preventDefault();
@@ -171,14 +219,19 @@
         const slide_2_2 = document.getElementById('FileDownloadSlide2');
         const editor = document.getElementById('file-download-editor');
 
-        function fileDownloadInputHandle() {
-            downloadCode = codeInp.value.split('http://127.0.0.1:8000/file-transfer')[0];
-            console.log(downloadCode);
+        function getDownloadCode() {
+            // Split by forward slash
+            downloadCode = codeInp.value.split('/');
+
+            // index 2 contains the logical IP.
+            if (downloadCode[2] === '127.0.0.1:8000' || downloadCode[2] === 'localhost:8000') {
+                codeInp.value = downloadCode[4]; // 3 contains the /file-transfer/
+            }
         }
         function getFiles() {
             slide_2_1.style.display = "none";
             slide_2_2.style.display = "flex";
-            console.log(`Files are requested for link : http://127.0.0.1:8000/file-transfer/${downloadCode}`);
+            console.log(`Files are requested for link : http://127.0.0.1:8000/file-transfer/${codeInp.value}`);
         }
         function resetDownload() {
             slide_2_1.style.display = "flex";
@@ -200,6 +253,20 @@
             var elem = document.getElementById('editor-box');
             if (elem.style.display === 'flex') {elem.style.display = "none";}
             else {elem.style.display = "flex";}
+        }
+
+        //////////////////////////////
+        // Common Functions
+        /////////////////////////////
+        function switchScreen(action,num) {
+            if (action === 'upload') {
+                slide_1_1.style.display = num === '1' ? "flex" : "none";
+                slide_1_2.style.display = num === '2' ? "flex" : "none";
+                slide_1_3.style.display = num === '3' ? "flex" : "none";
+            } else {
+                slide_2_1.style.display = num === '1' ? "flex" : "none";
+                slide_2_2.style.display = num === '2' ? "flex" : "none";
+            }
         }
     </script>
 </body>

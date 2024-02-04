@@ -5,11 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataCrate | Footer</title>
-    <link rel="stylesheet" href="{% static 'css/Components/Footer.css' %}">
+    <link rel='stylesheet' href="{% static 'css/Components/Footer.css' %}">
 </head>
 <body>
     <div class="FooterMainwrapper">
-        This is a footer
+        <div class="FooterMainContainer">
+            <div class="FooterLeftSection">
+                <div class="FooterLogo"> Data Crate </div>
+                <div class="FooterDesc"> An Idea to facilitate the file management right from the 
+                    file uploads to storage to retrival and much more with an user friendly UI
+                    and some special tools to make tasks easier.
+                </div>
+            </div>
+            <div class="FooterRightSection">
+                <div class="FooterLinksHolder">
+                    <div class="FooterLinkHolderHead"> Quick Links </div>
+                    <a href="{% url 'FileShare:FileShare' %}" class="FooterLinkItem"> File Share </a>
+                    <a href="{% url 'Editor:Editor' %}" class="FooterLinkItem"> Editor </a>
+                    <a href="{% url 'FileStore:Home' %}" class="FooterLinkItem"> File Store </a>
+                    <a href="{% url 'ToolsServices:Home' %}" class="FooterLinkItem"> Tools </a>
+                </div>
+                <div class="FooterLinksHolder">
+                    <div class="FooterLinkHolderHead"> Support </div>
+                    <a href="{% url 'BasicSite:SignIn' %}" class="FooterLinkItem"> Login </a>
+                    <a href="{% url 'BasicSite:SignUp' %}" class="FooterLinkItem"> Sign up </a>
+                    <a href="#" class="FooterLinkItem"> FAQ's </a>
+                    <a href="#" class="FooterLinkItem"> Help Desk </a>
+                </div>
+                <div class="FooterLinksHolder">
+                    <div class="FooterLinkHolderHead"> Social Handles </div>
+                    <a href="#" class="FooterLinkItem"> Email </a>
+                    <a href="#" class="FooterLinkItem"> Mobile </a>
+                    <a href="#" class="FooterLinkItem"> Instagram </a>
+                    <a href="#" class="FooterLinkItem"> Facebook </a>
+                </div>
+            </div>
+        </div>
+        <div class="FooterCopyRightContainer"> @Copyrights 2024 belongs to its owner </div>
     </div>
 </body>
 </html>

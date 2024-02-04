@@ -4,27 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-
-    /* Component colours */
-    --cmp-lvl-1-bg-clr : rgb(151 162 151 / 15%);
-
-    /* Navbar colours */
-    --nav-bg-clr : rgb(6 20 11 / 65%);
-    --nav-txt-clr :  rgb(78, 75, 75);
-    --nav-special-txt-clr : green;
-    --nav-highlight-txt-clr : white;
-    --nav-anti-highlight-txt-clr : black;
-    &.light {
-        /* Navbar colours */
-        --nav-bg-clr : rgb(232 249 228 / 40%);
-        --nav-txt-clr : rgb(65,68,65);
-        --nav-highlight-txt-clr : black;
-        --nav-special-txt-clr : green;
-        --nav-anti-highlight-txt-clr : white;
-    }
-}
-
 .EditorMainWrapper {
     display: flex;
     align-items: flex-start;
@@ -104,6 +83,7 @@ body {
     height: fit-content;
 
     padding: 10px;
+    gap: 15px;
     font-family: sans-serif;
 }
 
@@ -113,7 +93,7 @@ body {
     justify-content: flex-start;
     flex-direction: column;
 
-    width: 140px;
+    width: auto;
     min-height: 60px;
 }
 

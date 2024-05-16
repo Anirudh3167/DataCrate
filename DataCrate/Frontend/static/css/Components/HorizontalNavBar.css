@@ -81,7 +81,7 @@
     height: 2px;
 
     margin: 3px;
-    background-color: white;
+    background-color: var(--nav-highlight-txt-clr);
 }
 .HamburgerTop {top: 4px;}
 .HamburgerMid {top: 20px;}
@@ -177,7 +177,7 @@
         height: fit-content;
         width: 100%;
         max-width: 300px;
-        background-color: black;
+        background-color: var(--nav-anti-highlight-txt-clr);
     }
     .NavLink {flex-direction: column;}
     .NavMainLinks {
@@ -189,7 +189,7 @@
         min-width: 120px;
         width: 100%;
         max-width: 300px;
-        background-color: black;
+        background-color: var(--nav-anti-highlight-txt-clr);
     }
     .NavMainLink {flex-direction: column;}
     .HamburgerMenu {display: flex;}

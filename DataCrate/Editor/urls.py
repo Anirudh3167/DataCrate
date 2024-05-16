@@ -8,6 +8,8 @@ app_name = "Editor"
 
 urlpatterns = [
     # File Sharing
-    path('', EditorHome, name = "Editor"),
+    path('', EditorBase, name = "Editor"),
+    path('<str:link>', EditorHome, name = "Editor"),
+    path('api/editor-generate-link',EditorGenerateLink, name='EditorGenerateLink'),
 ]
 urlpatterns += staticfiles_urlpatterns()

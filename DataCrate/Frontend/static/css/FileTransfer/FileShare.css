@@ -117,6 +117,7 @@
     margin: 5px 10px;
     padding: 10px;
     cursor: pointer;
+    box-shadow: 4px 6px 8px var(--file-share-box-shadow);
     color: var(--nav-highlight-txt-clr);
     background-color: var(--nav-special-txt-clr);
 }
@@ -336,6 +337,7 @@
     font-weight: 500;
     border-radius: 10px;
     font-family: sans-serif;
+    box-shadow: 4px 6px 8px var(--file-share-box-shadow);
     background-color: var(--nav-special-txt-clr);
 }
 

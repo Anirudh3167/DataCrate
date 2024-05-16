@@ -4,5 +4,15 @@ from django.shortcuts import render
 def Home(request):
     return render(request,"ToolsServices/ToolsServicesHome.html")
 
-def SpecialLinks(request):
+def SpecialLinksTool(request):
     return render(request,"ToolsServices/SpecialLinks.html")
+
+def SpecialLinkPage(request, linkId):
+    # Get the data corresponding to the link from db.
+
+    data = {
+        'linkName' : 'File 0',
+        'linkId' : linkId,
+    }
+
+    return render(request,'ToolsServices/SpecialLinkPages/SpecialLinkPage.html',context = data)

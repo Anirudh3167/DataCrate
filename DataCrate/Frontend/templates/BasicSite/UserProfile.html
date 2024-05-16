@@ -28,19 +28,19 @@
                     <div class="profileRightItemWrapper">
                         <div class="profileRightItem" style="width: 40%;min-width: 280px;">
                             <div class="inputLabel"> Email </div>
-                            <input type="email" value="user@email.com" id="inp-email" class="inputBoxContainer" >
+                            <input type="email" value="user@email.com" required readonly id="inp-email" class="inputBoxContainer" >
                         </div>
                             <div class="profileRightItem">
                                 <div class="inputLabel"> Phone Number </div>
-                                <input type="tel" value="0123456789" id="inp-pass" class="inputBoxContainer" >
+                                <input type="tel" value="0123456789" required readonly id="inp-pass" class="inputBoxContainer" >
                             </div>
                             <div class="profileRightItem">
                                 <div class="inputLabel"> Country </div>
-                                <input type="text" value="India" id="inp-country" class="inputBoxContainer" >
+                                <input type="text" value="India" required readonly id="inp-country" class="inputBoxContainer" >
                             </div>
                             <div class="profileRightItem">
                                 <div class="inputLabel"> City </div>
-                                <input type="text" value="Delhi" id="inp-city" class="inputBoxContainer" >
+                                <input type="text" value="Delhi" required readonly id="inp-city" class="inputBoxContainer" >
                             </div>
                         <!-- </div> -->
                     </div>
@@ -59,14 +59,36 @@
         <div class="profileMainDetails">
             <div class="sectionHead"> Settings </div>
             <div class="profileSettingsContainer">
-                <div class="profileButtons"> Edit details </div>
-                <div class="profileButtons" style="background-color: rgba(212, 77, 77, 0.79);"> logout </div>
+                <div class="profileButtons" id="edit-details-btn" onclick="allowEdit()"> Edit details </div>
+                <div class="profileButtons"> logout </div>
                 <div class="profileButtons"> password update </div>
                 <div class="profileButtons" style="background-color: red;"> delete account </div>
                 <div class="profileButtons"> empty storage</div>
                 <div class="profileButtons"> cutomize UI </div>
+                <div class="profileButtons"> Expand Space </div>
+                <div class="profileButtons"> API Keys </div>
             </div>
         </div>
     </div>
+    <script>
+        function allowEdit() {
+            // Get the input boxes.
+            let inpBox = document.getElementsByClassName('inputBoxContainer');
+            let btn = document.getElementById('edit-details-btn');
+
+            // Toggle the readonly condition.
+            for(let i = 0; i < inpBox.length; i++) {
+                inpBox[i].toggleAttribute('readonly');
+            }
+
+            // Update the details to the backend.
+            if (btn.innerText === 'Save Changes') console.log(inpBox[0].value);
+
+            // Change the button name.
+            if (btn.innerText === 'Save Changes') {btn.innerText = 'Edit Details';}
+            else {btn.innerText = 'Save Changes';}
+
+        }
+    </script>
 </body>
 </html>

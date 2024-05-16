@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataCrate | {{ linkName }}</title>
+    <link rel="stylesheet" href="{% static 'css/ToolsServices/SpecialLinkPages/specialLinkPage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Variables/Variables.css' %}">
+</head>
+<body>
+    <div class="specialLinkMainContainer">
+        You came to the special Link Page with link id {{ linkId }}
+        <!-- Option for update. (On Click get the code and if it matches then grant the permission by alloting a token) -->
+        <!-- Facility for uploading and deleting old files -->
+        <!-- Viewing files -->
+    </div>
+</body>
+</html>

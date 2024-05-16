@@ -1,0 +1,24 @@
+* {
+    width: 100%;    height: 100%;
+    padding: 0;     margin: 0;
+    box-sizing: border-box;
+}
+
+
+.specialLinkMainContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 100%;
+    height: fit-content;
+
+    padding: 10px;
+    background-color: var(--nav-anti-highlight-txt-clr);
+    color: var(--nav-highlight-txt-clr);
+
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 400;
+}

@@ -16,7 +16,7 @@
 .FooterMainContainer {
     display: flex;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
 
@@ -85,7 +85,7 @@
     height: 100%;
 
     padding: 10px;
-    gap: 20px;
+    gap: 15px;
     font-family: sans-serif;
 }
 
@@ -110,6 +110,7 @@
     padding: 10px;
     font-weight: 600;
     font-size: 18px;
+    border-bottom: 1px solid;
     color: var(--nav-highlight-txt-clr);
 }
 
@@ -123,7 +124,7 @@
 
     padding: 10px;
     color: var(--nav-highlight-txt-clr);
-    background-color: var(--nav-anti-highlight-txt-clr);
+    border-radius: 5px;
     text-decoration: none;
 }
 .FooterLinkItem:hover {background-color: rgba(165, 157, 157, 0.833);}

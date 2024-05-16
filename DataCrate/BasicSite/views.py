@@ -31,7 +31,7 @@ def SignIn(request):
         #     pass
         # print(request.authenticated)
         login(request,user)
-        return render(request,'BasicSite/dashboard.html')
+        return redirect('BasicSite:Dashboard')
     return render(request,'BasicSite/SignIn.html')
 
 def SignUp(request):
@@ -44,7 +44,7 @@ def SignUp(request):
         results = list(set( UserDetails.objects.filter(Q(username = uname) | Q(email=email))))
         if results != []:
             # User already exists
-            return render(request,'BasicSite/HomePage.html')
+            return redirect('BasicSite:Home')
         else:
             user = UserDetails.objects.create(username = uname, email = email, password = make_password(password))
             user.save()
@@ -56,7 +56,7 @@ def SignUp(request):
         user = authenticate(request = request, username = uname, password = password)
         print(user)
         if user: login(request,user)
-        return render(request,'BasicSite/dashboard.html')
+        return redirect('BasicSite:Dashboard')
     return render(request,'BasicSite/SignUp.html')
 
 

@@ -9,5 +9,8 @@ app_name = "FileShare"
 urlpatterns = [
     # File Sharing
     path('', FileShare, name = "FileShare"),
+    path('<str:id>',FileDownload,name='FileDownloadByID'),
+    path('api/file-upload',FileUpload,name="FileUpload"),
+    path('api/file-download/<str:id>',FileDownload,name='FileDownload'),
 ]
 urlpatterns += staticfiles_urlpatterns()

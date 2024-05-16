@@ -27,7 +27,17 @@
             </div>
             <!-- Files here -->
             <div class="FileStoreFiles">
+                {% if files %}
+                {% for file in files %}
+                <a href="#" class="FileContainer">
+                    <div class="FileTypeImg"> {{file.fileType}} </div>
+                    <div class="FileStoreFileName"> {{file.filename}} </div>
+                    <div class="FileStorePublishedDate"> {{file.publishedDate}} </div>
+                </a>
+                {% endfor %}
+                {% else %}
                 No files here.
+                {% endif %}
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf_token" content="{{ csrf_token }}">
     <title> DataCrate </title>
     <link rel="stylesheet" href="{% static 'css/FileTransfer/FileShare.css' %}">
     <link rel="stylesheet" href="{% static 'css/Variables/Variables.css' %}">
@@ -77,23 +78,23 @@
                     <div class="FileDownloadText"> Enter the link or code :</div>
                     <div class="FileDownloadLinkBox">
                         <input type="text" value="http://127.0.0.1:8000/file-transfer/" readonly style="text-align: right;">
-                        <input type="text" id="download-code" placeholder="Your Code" oninput="getDownloadCode()">
+                        <input type="text" id="download-code" placeholder="Your Code" oninput="(e)=>getDownloadCode(e.target.value)">
                     </div>
                     <div class="DownloadLinkBtn" onclick="getFiles()"> Get Files </div>
-                    <div class="DownloadLinkBtn" onclick="showEditor()"> Show Editor </div>
+                    <!-- <div class="DownloadLinkBtn" onclick="showEditor()"> Show Editor </div> -->
                 </div>
                 <!-- Slide 2.2 : Show the download options -->
                 <div class="FileDownloadSlide" id="FileDownloadSlide2" style="display: none;height: 450px;align-items: flex-start;">
-                    <div class="FileUploadShowFiles" style="height: 100%;">
-                        <div class="FileUploadFile"> 
+                    <div class="FileUploadShowFiles" id="file-download-box" style="height: 100%;">
+                        <!-- <div class="FileUploadFile"> 
                             Some File here 
                             <div class="FileUploadDeleteFile"> Download </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="FileDownloadFileInfo">
-                        <div class="FileDownloadFileCount"> 2 files in total </div>
+                        <div class="FileDownloadFileCount" id="file-count-box"> 2 files in total </div>
                         <div class="FileDownlodBtns">
-                            <div class="FileDownloadBtn"> Download All </div>
+                            <div class="FileDownloadBtn" onclick="downloadFiles('all')"> Download All </div>
                             <div class="FileDownloadBtn" style="background-color: red;" onclick="resetDownload()"> Cancel </div>
                         </div>
                     </div>
@@ -148,15 +149,37 @@
             // Change the button to copied
             copyLink.innerText = 'Copied';
         }
-        function generateLink() {
-            // Send the files to backend via javascript post request.
-            // console.log(fileInput.files);
+        async function generateLink() {
+            // Create a FormData object to send files
+            var formData = new FormData();
+            for (var i = 0; i < fileInput.files.length; i++) {
+                formData.append('fileInput', fileInput.files[i]);
+            }
 
+            // Send the files to backend via javascript post request.
+            let csrf = getCookie('csrftoken');
+            console.log(csrf);
+            // Send a request to the  backend for the code
+            var req = await fetch("{% url 'FileTransfer:FileUpload' %}", {
+                method: "POST",
+                credentials: 'include',
+                headers:{
+                    // 'Content-Type': 'x-www-form-urlencoded',
+                    // 'Accept' : 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                // body:JSON.stringify({'code':codeInp.value}),
+                body: formData,
+            });
+            // Get the result you needed.
+            var res = await req.json();
+            console.log(res);
+            
             // Switch to screen 3.
             switchScreen('upload','3');
-
+            
             // Show the generated link.
-            let link = "http://127.0.0.1:8000/dashboard";
+            let link = `http://127.0.0.1:8000/${res.code}`;
             linkDisp.href = link;
             linkDisp.innerText = link;
 
@@ -217,9 +240,11 @@
         const codeInp = document.getElementById('download-code');
         const slide_2_1 = document.getElementById('FileDownloadSlide1');
         const slide_2_2 = document.getElementById('FileDownloadSlide2');
-        const editor = document.getElementById('file-download-editor');
+        var editor = document.getElementById('file-download-editor');
+        var editorBox = document.getElementById('editor-box');
+        let file_count = 0;
 
-        function getDownloadCode() {
+        function getDownloadCode(idx) {
             // Split by forward slash
             downloadCode = codeInp.value.split('/');
 
@@ -228,34 +253,106 @@
                 codeInp.value = downloadCode[4]; // 3 contains the /file-transfer/
             }
         }
-        function getFiles() {
-            slide_2_1.style.display = "none";
-            slide_2_2.style.display = "flex";
+        async function getFiles() {
+
+            let url = "{% url 'FileTransfer:FileShare' %}";
+            // Add the params.
+            url += codeInp.value;
+            url += "?request-type=MetaDataRequest";
+            {% comment %} url += `&code=${codeInp.value}`; {% endcomment %}
+            // Request for files/code in the link
+            var req = await fetch(url,{
+                method : 'GET',
+                headers : {'Content-Type' : 'Application/json'},
+                credentials : 'include',
+            });
+            var res = await req.json();
+            console.log(res);
+
+            // If the code is of the Editor
+            if (Object.keys(res.Code).length !== 0) {
+                // Display the editor with the content.
+                showEditor();
+                getEditorContent(res.Code.content);
+            } else {    // Code is of file links.
+                // Switch the slide.
+                switchScreen('download','2');
+
+                // Get the file to the file download box.
+                var box = document.getElementById('file-download-box');                
+                // Get the dynamic content.
+                let content = '';
+                let files = res.files;
+                for(let i = 0; i < files.length; i++) {
+                    content += `<div class="FileUploadFile"> ${files[i].filename}
+                            <div class="FileUploadDeleteFile" onclick="downloadFiles(${files[i].index})"> Download </div>
+                        </div>`;
+                }
+                box.innerHTML = content;
+                // Update the file count
+                var fileCountBox = document.getElementById('file-count-box');
+                fileCountBox.innerText = `${files.length} files in total`;
+                file_count = files.length;
+            }
             console.log(`Files are requested for link : http://127.0.0.1:8000/file-transfer/${codeInp.value}`);
+        }
+        async function downloadFiles(idx) {
+            // Select the indexes to be downloaded
+            if (idx === 'all') {
+                for(let i = 0; i < file_count; i++) {downloadFiles(i);}
+                return ;
+            }
+            let arr = idx;
+            // Request server for files with indexes.
+            let url = "{% url 'FileTransfer:FileShare' %}";
+            // Add the params.
+            url += 'api/file-download/' + codeInp.value;
+            url += "?request-type=FileDownloadRequest";
+            url += `&code=${encodeURIComponent(codeInp.value)}`;
+            url += `&index=${encodeURIComponent(JSON.stringify(arr))}`;
+            // Result will be a file directly downloaded to system
+            // No support in AJAX. Either do it manually in js or in new browser.
+            var res = await fetch(url,{
+                method : 'GET',
+                credentials : 'include',
+            });
+            // Extract the filename
+            let filename = res.headers.get('Content-Disposition').split(';');
+            filename = filename[1].split('filename=');
+            let extractedname = "";
+            for(let i = 1; i < filename.length; i++) {
+                extractedname += filename[i];
+            }
+            console.log(extractedname)
+            // Simulate Download Click
+            const anchor = document.createElement('a');
+            anchor.href = await URL.createObjectURL(await res.blob());
+            anchor.download = extractedname;
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
         }
         function resetDownload() {
             slide_2_1.style.display = "flex";
             slide_2_2.style.display = "none";
         }
-        function getEditorContent() {
-            content = `
-                def HelloWorld():
-                    return "Hello word"
+        function getEditorContent(content) {
+            // content = `
+            //     def HelloWorld():
+            //         return "Hello word"
                 
-                def main():
-                    print(HelloWorld())
+            //     def main():
+            //         print(HelloWorld())
 
-                main()`;
+            //     main()`;
             console.log(content);
             editor.innerText = content;
         }
         function showEditor() {
-            var elem = document.getElementById('editor-box');
-            if (elem.style.display === 'flex') {elem.style.display = "none";}
-            else {elem.style.display = "flex";}
+            if (editorBox.style.display === 'flex') {editorBox.style.display = "none";}
+            else {editorBox.style.display = "flex";}
         }
-
-        //////////////////////////////
+         //////////////////////////////
         // Common Functions
         /////////////////////////////
         function switchScreen(action,num) {
@@ -267,6 +364,11 @@
                 slide_2_1.style.display = num === '1' ? "flex" : "none";
                 slide_2_2.style.display = num === '2' ? "flex" : "none";
             }
+        }
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
         }
     </script>
 </body>
